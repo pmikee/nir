@@ -1,0 +1,40 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:tns="http://localhost:8080/ws" targetNamespace="http://localhost:8080/ws"
+	elementFormDefault="qualified">
+
+	<xs:element name="getOrderRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="order" type="tns:order" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="getOrderResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:string" />
+				<xs:element name="total" type="xs:decimal" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="order">
+		<xs:sequence>
+			<xs:element name="id" type="xs:string" />
+			<xs:sequence minOccurs="1" maxOccurs="unbounded">
+				<xs:element name="position" type="tns:positions" />
+			</xs:sequence>
+			<xs:element name="customer" type="xs:string" />
+			<xs:element name="date" type="xs:dateTime" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="positions">
+		<xs:sequence>
+			<xs:element name="product" type="xs:string" />
+			<xs:element name="quantity" type="xs:decimal" />
+		</xs:sequence>
+	</xs:complexType>
+
+</xs:schema>
