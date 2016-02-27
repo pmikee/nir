@@ -10,7 +10,6 @@ import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -32,7 +31,6 @@ import localhost._8080.ws.Positions;
 @Endpoint
 public class OrderEndpoint {
 	private static final String NAMESPACE_URI = "http://localhost:8080/ws";
-	private static final Logger LOGGER = Logger.getLogger(OrderEndpoint.class);
 
 	@Autowired
 	private OrderHeadRepository orderRepository;
