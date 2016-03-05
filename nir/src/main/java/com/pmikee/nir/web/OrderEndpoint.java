@@ -47,9 +47,6 @@ public class OrderEndpoint {
 		GetOrderResponse response = new GetOrderResponse();
 		List<OrderPosition> positions = new ArrayList<>();
 
-//		for (Product p : productRepository.findAll()) {
-//			LOGGER.info(p.toString());
-//		}
 		for (Positions p : request.getOrder().getPosition()) {
 			checkProductAvailability(p);
 			positions.add(createOrderPosition(p));
@@ -62,6 +59,7 @@ public class OrderEndpoint {
 			orderPositionRepository.save(op);
 		}
 		response.setId(order.getId());
+		response.setTotal(orderPositionRepository.getSumByOrderHead(order));
 
 		return response;
 	}
